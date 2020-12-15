@@ -4,7 +4,8 @@
   "description": "the backend of WebMall. Node.js Restful CRUD API with Node.js, Express and MongoDB/ Sequelize & MySQL.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
   },
   "keywords": [
     "nodejs",
