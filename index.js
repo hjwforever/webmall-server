@@ -9,6 +9,8 @@ const corsOptions = {
 };
 
 global.__basedir = __dirname;
+app.use(express.static("views"))
+
 
 app.use(cors(corsOptions));
 
