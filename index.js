@@ -54,8 +54,12 @@ mysql.sequelize.sync({ force: true }).then(() => {
 });
 
 // simple route
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to the backend of WebMall." });
+// app.get("/", (req, res) => {
+//     res.json({ message: "Welcome to the backend of WebMall." });
+// });
+
+app.get("/api/", (req, res) => {
+  res.json({ message: "Welcome to the backend of WebMall." });
 });
 
 // 路由
