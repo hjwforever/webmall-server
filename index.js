@@ -70,7 +70,7 @@ require('./routes/user.routes')(app);
 require("./routes/upload.routes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8085;
+const PORT = process.env.PORT || 8086;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
@@ -91,7 +91,7 @@ async function initial() {
     id: 1,
     username: 'test',
     email: 'test@qq.com',
-    password: 'test'
+    password: '$2a$08$tyUdqBXDkSIkeUhBNJOcl.yiNAdfnbJS/54AJPUbJJ69foS4pNVna'
   });
 
   mysql.shops.create({
