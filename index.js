@@ -104,6 +104,14 @@ async function initial() {
     name: "苹果",
     description: "测试, 大苹果, 好吃",
     price: 13,
+    url: "http://img.aruoxi.top/webmall/goods/mate40pro%2B.png"
+    // shopId : 1,
+  });
+  const good2 = await controller.createGood({
+    name: "橘子",
+    description: "测试, 橘子, 好吃",
+    price: 11,
+    url: "http://img.aruoxi.top/webmall/goods/mate40pro%2B.png"
     // shopId : 1,
   });
 

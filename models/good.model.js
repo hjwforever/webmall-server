@@ -10,6 +10,9 @@ module.exports = (sequelize, Sequelize) => {
         price: {
             type: Sequelize.FLOAT
         },
+        url: {
+            type: Sequelize.STRING
+        },
     },{
         timestamps: true,
         createdAt: false,

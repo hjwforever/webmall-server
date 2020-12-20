@@ -33,6 +33,7 @@ exports.create = (req, res) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price > 0 ? req.body.price : 0,
+    url: req.body.url ? req.body.shopId : "http://img.aruoxi.top/webmall/goods/mate40pro%2B.png",
     shopId: req.body.shopId
       // ? req.body.shopId : 0,
   };
@@ -194,7 +195,8 @@ exports.createGood = (good) => {
     name: good.name,
     description: good.description,
     price: good.price,
-    shopId: good.shopId
+    shopId: good.shopId,
+    url: good.url
       // ? good.shopId : 0,
   })
     .then((good) => {
