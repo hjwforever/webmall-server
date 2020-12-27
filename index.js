@@ -2,10 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+const path = __dirname + '/views/';
+
 const app = express();
+app.use(express.static(path));
 
 const corsOptions = {
-  origin: "http://localhost:8085"
+  origin: `http://localhost:8085`
 };
 
 global.__basedir = __dirname;
@@ -69,7 +72,7 @@ require('./routes/user.routes')(app);
 require("./routes/upload.routes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8086;
+const PORT = process.env.PORT || 8085;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
