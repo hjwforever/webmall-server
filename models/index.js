@@ -35,6 +35,10 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+// 设置角色类型
+db.ROLES = ["user", "admin"];
+db.label = require("./label.model.js")(sequelize, Sequelize);
+
 // 商铺和商品
 db.shops = require("./shop.model.js")(sequelize, Sequelize);
 db.goods = require("./good.model.js")(sequelize, Sequelize);
@@ -43,7 +47,7 @@ db.goods = require("./good.model.js")(sequelize, Sequelize);
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.role = require("./role.model.js")(sequelize, Sequelize);
 
-// 商品的评论和标签
+// 商品的评论和分类标签
 db.comments = require("./comment.model.js")(sequelize, Sequelize);
 db.tag = require("./tag.model.js")(sequelize, Sequelize);
 
@@ -62,9 +66,6 @@ db.user.belongsToMany(db.role, {
   otherKey: "roleId"
 });
 
-// 设置角色类型
-db.ROLES = ["user", "admin"];
-
 // 商铺和商品 一对多关系
 db.shops.hasMany(db.goods, { as: "goods" });
 db.goods.belongsTo(db.shops, {
@@ -79,7 +80,7 @@ db.comments.belongsTo(db.goods, {
   as: "good",
 });
 
-// 商品和标签 多对多关系
+// 商品和分类标签 多对多关系
 db.tag.belongsToMany(db.goods, {
   through: "good_tag",
   as: "goods",
@@ -91,4 +92,17 @@ db.goods.belongsToMany(db.tag, {
   foreignKey: "good_id",
 });
 
+// 商品和标签 多对多关系
+db.label.belongsToMany(db.goods, {
+  through: "good_label",
+  // as: "goods",
+  foreignKey: "label_id",
+  otherKey: "good_id"
+});
+db.goods.belongsToMany(db.label, {
+  through: "good_label",
+  // as: "labels",
+  foreignKey: "good_id",
+  otherKey: "label_id"
+});
 module.exports = db;

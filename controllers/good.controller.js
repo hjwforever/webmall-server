@@ -12,7 +12,8 @@ const getPagination = (page, size) => {
 };
 
 const getPagingData = (data, page, limit) => {
-  const { count: totalItems, rows: goods } = data;
+  const { rows: goods } = data;
+  const totalItems = goods.length;
   const currentPage = (page ? +page : 0) + 1;
   const totalPages = Math.ceil(totalItems / limit);
   return { totalItems, goods , totalPages, currentPage };
@@ -33,7 +34,6 @@ exports.create = (req, res) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price > 0 ? req.body.price : 0,
-    url: req.body.url ? req.body.shopId : "http://img.aruoxi.top/webmall/goods/mate40pro%2B.png",
     shopId: req.body.shopId
       // ? req.body.shopId : 0,
   };
@@ -66,8 +66,20 @@ exports.findAll = (req, res) => {
 
   const condition = name ? { title: { [Op.like]: `%${name}%` } } : null;
   const { limit, offset } = getPagination(page, size);
+  const include = [
+    "comments",
+    {
+      model: db.label,
+      as: "labels",
+      attributes: ["id", "label", "color", "bgColor", "style"],
+      through: {
+        attributes: [],
+      }
+    }
+  ];
 
-  Good.findAndCountAll({ where: condition, limit, offset,include: ["comments"] })
+  const options = size.toString() === 'all' ? { where: condition, include: include} : { where: condition, limit, offset,include: include};
+  Good.findAndCountAll(options)
     .then(data => {
       const response = getPagingData(data, page, limit);
       // console.log(response);
@@ -195,8 +207,8 @@ exports.createGood = (good) => {
     name: good.name,
     description: good.description,
     price: good.price,
-    shopId: good.shopId,
-    url: good.url
+    imgUrl: good.imgUrl,
+    shopId: good.shopId
       // ? good.shopId : 0,
   })
     .then((good) => {

@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
-  // Create a and save new user
+  // Save User to Database
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -29,6 +29,7 @@ exports.signup = (req, res) => {
           });
         });
       } else {
+        // user role = 1
         user.setRoles([1]).then(() => {
           res.send({ message: "User was registered successfully!" });
         });
