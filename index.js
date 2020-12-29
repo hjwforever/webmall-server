@@ -126,7 +126,11 @@ async function initial() {
       name: `mate40pro${i}`,
       description: `测试, mate40pro${i}`,
       price: i*100,
-      imgUrl: "http://img.aruoxi.top/webmall/goods/mate40pro%2B.png"
+      imgUrl: "https://s3.ax1x.com/2020/12/29/rqegSg.png"
+    //   https://s3.ax1x.com/2020/12/29/rqe2lQ.png  //轮播图1
+    //   https://s3.ax1x.com/2020/12/29/rqeRyj.png  //轮播图2
+    // https://s3.ax1x.com/2020/12/29/rqe6fS.png    //logo
+    //   https://s3.ax1x.com/2020/12/29/rqegSg.png  //mate40
     }).then(good => {
       // 设置标签
       good.setLabels([Math.random()%2+1]);
