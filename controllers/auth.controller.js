@@ -13,7 +13,8 @@ exports.signup = (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8)
+    password: bcrypt.hashSync(req.body.password, 8),
+    avatar: req.body.avatar || 'https://image.aruoxi.com/webmall/avatar/10.jpg'
   })
     .then(user => {
       if (req.body.roles) {
@@ -77,6 +78,7 @@ exports.signin = (req, res) => {
           username: user.username,
           email: user.email,
           roles: authorities,
+          avatar: user.avatar,
           accessToken: token
         });
       });

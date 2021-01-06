@@ -8,6 +8,10 @@ module.exports = (sequelize, Sequelize) => {
     },
     password: {
       type: Sequelize.STRING
+    },
+    avatar: {
+      type: Sequelize.STRING,
+      default: 'https://s3.ax1x.com/2020/12/30/rq3lmF.png'
     }
   },{
     timestamps: true,

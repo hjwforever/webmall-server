@@ -72,11 +72,11 @@ require('./routes/user.routes')(app);
 require("./routes/upload.routes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8085;
+const PORT = process.env.PORT || 8086;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
-
+const wss = require("./controllers/ws.controller")
 
 async function initial() {
   // 创建角色
@@ -94,8 +94,17 @@ async function initial() {
   mysql.user.create({
     id: 1,
     username: 'test',
+    avatar: 'https://s3.ax1x.com/2021/01/04/sit7zn.jpg', // https://image.aruoxi.com/webmall/avatar/10.jpg
     email: 'test@qq.com',
-    password: '$2a$08$mGafV9KFEtL1mwnRUC29eOVKp7mmemiz6VDIZa9bOqyEusRK9hDpa'
+    password: '$2a$08$mGafV9KFEtL1mwnRUC29eOVKp7mmemiz6VDIZa9bOqyEusRK9hDpa',
+  });
+
+  mysql.user.create({
+    id: 2,
+    username: 'admin',
+    avatar: ' https://image.aruoxi.com/webmall/avatar/10.jpg',
+    email: 'admin@webmall.com',
+    password: '$08$uu.2FvsiR4F16iQoSmCK9ubhuGihOEfxK47XF/i2KKKre7Ec8oRFm',
   });
 
   // 创建商店
