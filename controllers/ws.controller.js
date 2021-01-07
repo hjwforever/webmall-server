@@ -2,7 +2,8 @@ let userCount = 0; // 统计在线人数
 // 记录聊天记录
 const chatList = [{"userId":1,"name":"test","avatar":"https://s3.ax1x.com/2021/01/04/sit7zn.jpg","text":["<strong>MebMall聊天室测试</strong>😄"],"time":"2021-01-06T16:00:42.546Z","stamp":"5 minutes ago"},{"userId":2,"name":"admin","avatar":"https://image.aruoxi.com/webmall/avatar/10.jpg","text":["前排围观\n",["hhh😊"]],"time":"2021-01-06T16:01:05.219Z","stamp":"4 minutes ago"},{"userId":1,"name":"test","avatar":"https://s3.ax1x.com/2021/01/04/sit7zn.jpg","text":["👍🤣"],"time":"2021-01-06T16:01:41.484Z","stamp":"4 minutes ago"},{"userId":2,"name":"admin","avatar":"https://image.aruoxi.com/webmall/avatar/10.jpg","text":["<span style=\"color: red\">哇，还可以打HTML语言</span>"],"time":"2021-01-06T16:03:23.148Z","stamp":"2 minutes ago"},{"userId":1,"name":"test","avatar":"https://s3.ax1x.com/2021/01/04/sit7zn.jpg","text":["<span style='color:orange'>是的</span >👏"],"time":"2021-01-06T16:05:08.010Z","stamp":"now"},{"userId":2,"name":"admin","avatar":"https://image.aruoxi.com/webmall/avatar/10.jpg","text":["666"],"time":"2021-01-06T16:07:37.059Z","stamp":"now"}];
 const WebSocketServer = require('ws').Server;
-let wss = new WebSocketServer({ port: 8181,path: '/ws' }); // 8181 与前端相对应
+
+let wss = new WebSocketServer({ port: 8181,path: '/ws' });
 
 function noop() {}
 
