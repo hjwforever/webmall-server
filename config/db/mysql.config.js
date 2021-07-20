@@ -1,8 +1,9 @@
 module.exports = {
-    HOST: "47.94.235.82",
-    USER: "webmall-server",
+    HOST: "101.201.127.11",
+    USER: "root",
     PASSWORD: "webmall306",
     DB: "webmall-vue",
+    PORT: 8090,
     dialect: "mysql",
     pool: {
         max: 5,
